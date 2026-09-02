@@ -1,0 +1,85 @@
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.content {
+  max-width: 640px;
+}
+
+.statement {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--color-light-text);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.body {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-light-text-muted);
+  margin-bottom: 32px;
+}
+
+.aims {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.aimItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: var(--color-light-text);
+  line-height: 1.5;
+}
+
+.aimBullet {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
+/* Decorative accent stripes */
+.accent {
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 60px;
+}
+
+.accentStripe {
+  height: 4px;
+  border-radius: 0;
+}
+
+.accentStripe:nth-child(1) {
+  width: 120px;
+  background-color: var(--color-saffron);
+}
+
+.accentStripe:nth-child(2) {
+  width: 80px;
+  background-color: var(--color-pitch-green);
+}
+
+.accentStripe:nth-child(3) {
+  width: 40px;
+  background-color: var(--color-navy);
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr auto;
+    gap: 80px;
+  }
+
+  .accent {
+    display: flex;
+  }
+}

@@ -1,0 +1,15 @@
+.blockquote {
+  border-left: 6px solid var(--color-pitch-green);
+  padding: 20px 24px;
+  margin: 0 0 48px 0;
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--color-light-text);
+  max-width: 720px;
+  background-color: rgba(27, 115, 64, 0.04);
+}
+
+.cards {
+  margin-top: 8px;
+}

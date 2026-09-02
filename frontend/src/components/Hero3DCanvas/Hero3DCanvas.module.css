@@ -1,0 +1,42 @@
+.canvasContainer {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  max-width: 550px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  user-select: none;
+}
+
+.canvasContainer:active {
+  cursor: grabbing;
+}
+
+.interactiveHint {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 16px;
+  background: rgba(14, 24, 16, 0.85);
+  border: 1px solid rgba(212, 103, 38, 0.4);
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--color-saffron);
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+  .canvasContainer {
+    height: 350px;
+  }
+}

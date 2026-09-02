@@ -1,0 +1,74 @@
+.footballCursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  z-index: 99999;
+  will-change: transform;
+  transition: width 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              height 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ballWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 0 8px rgba(212, 103, 38, 0.25);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.realBallImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.ringGlow {
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(212, 103, 38, 0);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  pointer-events: none;
+}
+
+/* Hover state on interactive elements */
+.hovered {
+  width: 34px;
+  height: 34px;
+}
+
+.hovered .ballWrapper {
+  transform: rotate(30deg) scale(1.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 20px rgba(212, 103, 38, 0.8);
+}
+
+.hovered .ringGlow {
+  border-color: rgba(212, 103, 38, 0.9);
+  box-shadow: inset 0 0 12px rgba(212, 103, 38, 0.5);
+}
+
+/* Click action */
+.clicking .ballWrapper {
+  transform: scale(0.85) rotate(-20deg);
+}
+
+/* Hide native cursor when custom cursor is active on fine pointer devices */
+@media (hover: hover) and (pointer: fine) {
+  :global(body),
+  :global(a),
+  :global(button),
+  :global(input),
+  :global(select),
+  :global(textarea),
+  :global(.btn),
+  :global([role="button"]) {
+    cursor: none !important;
+  }
+}

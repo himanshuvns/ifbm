@@ -1,0 +1,108 @@
+.playerWidget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.playBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  background: rgba(14, 28, 17, 0.9);
+  border: 1px solid rgba(212, 103, 38, 0.4);
+  border-radius: 100px;
+  color: #F7F7F2;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5),
+              0 0 15px rgba(212, 103, 38, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.playBtn:hover {
+  transform: translateY(-3px) scale(1.03);
+  border-color: var(--color-saffron);
+  box-shadow: 0 12px 30px rgba(212, 103, 38, 0.4);
+}
+
+.playBtnActive {
+  background: rgba(212, 103, 38, 0.25);
+  border-color: var(--color-saffron);
+}
+
+.btnIcon {
+  font-size: 14px;
+}
+
+.btnText {
+  white-space: nowrap;
+}
+
+.equalizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 14px;
+  margin-left: 4px;
+}
+
+.eqBar {
+  width: 3px;
+  height: 100%;
+  background: var(--color-saffron);
+  border-radius: 2px;
+  animation: eqBounce 1s infinite ease-in-out alternate;
+}
+
+.eqBar:nth-child(1) { animation-delay: 0.1s; }
+.eqBar:nth-child(2) { animation-delay: 0.3s; }
+.eqBar:nth-child(3) { animation-delay: 0.2s; }
+.eqBar:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes eqBounce {
+  0% { height: 3px; }
+  100% { height: 14px; }
+}
+
+.muteBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: rgba(14, 28, 17, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  color: #FFF;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  transition: all 0.2s ease;
+}
+
+.muteBtn:hover {
+  background: rgba(212, 103, 38, 0.3);
+  border-color: var(--color-saffron);
+}
+
+@media (max-width: 600px) {
+  .playerWidget {
+    bottom: 16px;
+    right: 16px;
+  }
+  .playBtn {
+    padding: 8px 14px;
+    font-size: 11px;
+  }
+}

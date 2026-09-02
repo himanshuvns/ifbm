@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <!-- Outer shadow drop -->
+  <circle cx="16" cy="17" r="13" fill="rgba(0,0,0,0.25)"/>
+  <!-- Ball white base -->
+  <circle cx="16" cy="16" r="13" fill="#F7F7F2" stroke="#1A1A1A" stroke-width="1.5"/>
+  <!-- Center Pentagon -->
+  <polygon points="16,11 20,14 18.5,19 13.5,19 12,14" fill="#1A1A1A"/>
+  <!-- Top patch -->
+  <polygon points="16,11 12,14 10,9 16,5 22,9 20,14" fill="none" stroke="#1A1A1A" stroke-width="1.2"/>
+  <!-- Bottom Left patch -->
+  <polygon points="13.5,19 12,14 6,15 5,21 11,24" fill="none" stroke="#1A1A1A" stroke-width="1.2"/>
+  <polygon points="13.5,19 11,24 16,28 21,24 18.5,19" fill="none" stroke="#1A1A1A" stroke-width="1.2"/>
+  <polygon points="18.5,19 20,14 26,15 27,21 21,24" fill="none" stroke="#1A1A1A" stroke-width="1.2"/>
+  <!-- Side patches fill -->
+  <polygon points="10,9 5,12 6,15 12,14" fill="#1A1A1A"/>
+  <polygon points="22,9 27,12 26,15 20,14" fill="#1A1A1A"/>
+  <polygon points="11,24 16,28 21,24 18.5,19 13.5,19" fill="#D46726"/>
+  <!-- Highlight shine -->
+  <circle cx="12" cy="10" r="2.5" fill="white" opacity="0.6"/>
+</svg>
