@@ -11,18 +11,39 @@ import (
 
 // CORS adds Cross-Origin Resource Sharing headers.
 func CORS(next http.Handler) http.Handler {
-	allowedOrigin := os.Getenv("ALLOWED_ORIGIN")
-	if allowedOrigin == "" {
-		allowedOrigin = "http://localhost:3000"
+	rawOrigins := os.Getenv("ALLOWED_ORIGIN")
+	if rawOrigins == "" {
+		rawOrigins = "http://localhost:3000"
 	}
+	allowedOrigins := strings.Split(rawOrigins, ",")
 
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		origin := r.Header.Get("Origin")
-		if origin == allowedOrigin {
-			w.Header().Set("Access-Control-Allow-Origin", origin)
+		isAllowed := false
+
+		if origin != "" {
+			for _, o := range allowedOrigins {
+				o = strings.TrimSpace(o)
+				if o == "*" || o == origin {
+					isAllowed = true
+					break
+				}
+			}
+
+			// Allow all ifbm vercel.app domains
+			if !isAllowed && strings.HasSuffix(origin, ".vercel.app") {
+				isAllowed = true
+			}
 		}
+
+		if isAllowed {
+			w.Header().Set("Access-Control-Allow-Origin", origin)
+		} else if rawOrigins == "*" {
+			w.Header().Set("Access-Control-Allow-Origin", "*")
+		}
+
 		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
 		w.Header().Set("Access-Control-Max-Age", "86400")
 
 		if r.Method == http.MethodOptions {
