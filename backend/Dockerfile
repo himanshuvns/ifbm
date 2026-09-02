@@ -3,15 +3,15 @@ FROM golang:1.22-alpine AS builder
 
 WORKDIR /app
 
-# Install dependencies
-COPY go.mod go.sum ./
-RUN go mod download
-
-# Copy source
+# Copy source files
 COPY . .
 
-# Build the binary
-RUN CGO_ENABLED=0 GOOS=linux go build -o server ./cmd/server
+# Dynamically handle build regardless of whether context is root or backend/
+RUN if [ -f "./backend/go.mod" ]; then \
+      cd ./backend && CGO_ENABLED=0 GOOS=linux go build -o /app/server ./cmd/server && cp -r migrations /app/migrations; \
+    else \
+      CGO_ENABLED=0 GOOS=linux go build -o /app/server ./cmd/server; \
+    fi
 
 # ---- Final Stage ----
 FROM alpine:3.19
