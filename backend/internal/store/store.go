@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"strings"
 	"time"
 
 	_ "github.com/lib/pq"
@@ -21,11 +22,19 @@ type Store struct {
 // New creates a new Store with a PostgreSQL connection.
 func New() (*Store, error) {
 	dsn := os.Getenv("DATABASE_URL")
-	if dsn == "" {
+	if dsn == "" || strings.Contains(dsn, "localhost") || strings.Contains(dsn, "127.0.0.1") || strings.Contains(dsn, "[::1]") {
 		dsn = os.Getenv("POSTGRES_URL")
 	}
-	if dsn == "" {
-		dsn = "postgresql://postgres:IGPofnyVXOsrCXOSloutclkpZqWFDFDx@postgres.railway.internal:5432/railway?sslmode=disable"
+	if dsn == "" || strings.Contains(dsn, "localhost") || strings.Contains(dsn, "127.0.0.1") || strings.Contains(dsn, "[::1]") {
+		dsn = "postgresql://postgres:IGPofnyVXOsrCXOSloutclkpZqWFDFDx@postgres-production-69d3.up.railway.app:5432/railway?sslmode=disable"
+	}
+
+	if !strings.Contains(dsn, "sslmode=") {
+		if strings.Contains(dsn, "?") {
+			dsn += "&sslmode=disable"
+		} else {
+			dsn += "?sslmode=disable"
+		}
 	}
 
 	db, err := sql.Open("postgres", dsn)
