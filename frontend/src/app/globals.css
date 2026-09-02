@@ -455,3 +455,10 @@ ol {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-pitch-green);
 }
+
+/* Custom cursor — hide native cursor on fine-pointer devices */
+@media (hover: hover) and (pointer: fine) {
+  body, a, button, input, select, textarea, .btn, [role="button"] {
+    cursor: none !important;
+  }
+}
