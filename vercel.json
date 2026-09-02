@@ -1,10 +1,7 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
-  "installCommand": "npm ci",
+  "installCommand": "npm install",
   "framework": "nextjs",
-  "rootDirectory": "frontend",
-  "engines": {
-    "node": "20.x"
-  }
+  "rootDirectory": "frontend"
 }
