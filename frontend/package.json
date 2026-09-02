@@ -2,6 +2,9 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,13 +12,13 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "next": "^15.3.4",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "three": "^0.185.1"
+    "next": "15.3.4",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "three": "0.185.0"
   },
   "devDependencies": {
-    "eslint": "^9",
-    "eslint-config-next": "^15.3.4"
+    "eslint": "9.31.0",
+    "eslint-config-next": "15.3.4"
   }
 }

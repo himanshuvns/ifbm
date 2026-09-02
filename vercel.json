@@ -3,5 +3,8 @@
   "outputDirectory": ".next",
   "installCommand": "npm install",
   "framework": "nextjs",
-  "rootDirectory": "frontend"
+  "rootDirectory": "frontend",
+  "env": {
+    "NEXT_TELEMETRY_DISABLED": "1"
+  }
 }
