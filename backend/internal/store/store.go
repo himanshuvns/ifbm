@@ -25,7 +25,7 @@ func New() (*Store, error) {
 		dsn = os.Getenv("POSTGRES_URL")
 	}
 	if dsn == "" {
-		dsn = "postgresql://postgres:IGPofnyVXOsrCXOSloutclkpZqWFDFDx@postgres-production-69d3.up.railway.app:5432/railway?sslmode=disable"
+		dsn = "postgresql://postgres:IGPofnyVXOsrCXOSloutclkpZqWFDFDx@postgres.railway.internal:5432/railway?sslmode=disable"
 	}
 
 	db, err := sql.Open("postgres", dsn)
