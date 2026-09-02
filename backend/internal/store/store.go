@@ -22,7 +22,10 @@ type Store struct {
 func New() (*Store, error) {
 	dsn := os.Getenv("DATABASE_URL")
 	if dsn == "" {
-		dsn = "postgres://localhost:5432/ifbm?sslmode=disable"
+		dsn = os.Getenv("POSTGRES_URL")
+	}
+	if dsn == "" {
+		dsn = "postgresql://postgres:IGPofnyVXOsrCXOSloutclkpZqWFDFDx@postgres-production-69d3.up.railway.app:5432/railway"
 	}
 
 	db, err := sql.Open("postgres", dsn)
