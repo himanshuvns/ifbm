@@ -26,7 +26,11 @@ func New() (*Store, error) {
 		dsn = os.Getenv("POSTGRES_URL")
 	}
 	if dsn == "" || strings.Contains(dsn, "localhost") || strings.Contains(dsn, "127.0.0.1") || strings.Contains(dsn, "[::1]") {
-		dsn = "postgresql://postgres:IGPofnyVXOsrCXOSloutclkpZqWFDFDx@postgres-production-69d3.up.railway.app:5432/railway?sslmode=disable"
+		dsn = "postgresql://postgres:IGPofnyVXOsrCXOSloutclkpZqWFDFDx@postgres.railway.internal:5432/railway?sslmode=disable"
+	}
+
+	if os.Getenv("RAILWAY_ENVIRONMENT") != "" && strings.Contains(dsn, "postgres-production-69d3.up.railway.app") {
+		dsn = strings.ReplaceAll(dsn, "postgres-production-69d3.up.railway.app", "postgres.railway.internal")
 	}
 
 	if !strings.Contains(dsn, "sslmode=") {
