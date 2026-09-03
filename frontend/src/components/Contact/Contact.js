@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import { getApiUrl } from '@/config/api';
 import useFadeIn from '@/hooks/useFadeIn';
 import styles from './Contact.module.css';
 
@@ -49,7 +50,7 @@ export default function Contact() {
     setErrors({});
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
+      const apiUrl = getApiUrl();
       const res = await fetch(`${apiUrl}/api/v1/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

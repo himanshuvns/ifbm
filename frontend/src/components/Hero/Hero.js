@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { getApiUrl } from '@/config/api';
 import useCountUp from '@/hooks/useCountUp';
 import use3DTilt from '@/hooks/use3DTilt';
 import useMagnetic from '@/hooks/useMagnetic';
@@ -46,7 +47,7 @@ export default function Hero() {
   useEffect(() => {
     async function fetchStats() {
       try {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
+        const apiUrl = getApiUrl();
         const res = await fetch(`${apiUrl}/api/v1/stats`);
         if (res.ok) {
           const data = await res.json();
